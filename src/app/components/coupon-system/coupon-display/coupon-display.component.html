@@ -1,0 +1,73 @@
+<section>
+  <div class="option-box">
+    <div class="option-filter">
+      <div class="option-filter-header">
+        CATEGORIES
+      </div>
+      <br>
+      <a style="text-align: center" [ngClass]="{'selected' : selectedCategory==''}" (click)="selectedCategory=''">
+        ALL
+      </a><br>
+      <ng-container *ngFor="let button of categories">
+        <a style="text-align: center" [ngClass]="{'selected' : button==selectedCategory}" (click)="selectedCategory=button">
+          {{button}}
+        </a>
+        <br>
+      </ng-container>
+    </div>
+
+    <br>
+
+    <div class="option-filter">
+      <div class="option-filter-header">
+        PRICE
+      </div>
+
+      <div class="slider-div">
+        <nouislider #slider [min]="minPrice || 0" [max]="maxPrice || 2" [step]="1" [(ngModel)]="priceRange"></nouislider>
+        <div class="price-inputs">
+          <mat-form-field>
+            <input matInput [(ngModel)]="priceRange[0]" placeholder="Min price">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="priceRange[1]" placeholder="Max price">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="option-filter" *ngIf="!showingPurchasedCoupons">
+      <div class="option-filter-header">
+        OTHER OPTIONS
+      </div>
+
+      <div>
+        <mat-checkbox [(ngModel)]="showInCart">Show in cart</mat-checkbox>
+      </div>
+      <div>
+        <mat-checkbox [(ngModel)]="showOutOfStock">Show Out of stock</mat-checkbox>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="search-box">
+    <input matInput placeholder="Free search..." [(ngModel)]="couponSearchByName">
+  </div>
+
+  <div class="coupon-box">
+
+    <ng-container *ngFor="let item of couponData;">
+      <app-coupon-single *ngIf="canShowCoupon(item)" [coupon]="item">
+      </app-coupon-single>
+    </ng-container>
+  </div>
+
+  <app-shopping-cart>
+
+  </app-shopping-cart>
+</section>

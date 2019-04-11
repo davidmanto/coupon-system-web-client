@@ -1,0 +1,14 @@
+<section>
+    <div class="main-div">
+      <app-cs-table 
+        [tableData]="companies" 
+        [rowsData] = "tableStructure" 
+        [(selectedRow)]="selectedRow" 
+        [isSelectable]="true"
+        [selectFunction] ="selectFunc"
+        [selectTextSelected] = "'Selected Company: '"
+        [selectTextVar] = "'name'"
+        [selectedButtonText] = "'View Details & Actions'">
+      </app-cs-table>
+    </div>
+  </section>

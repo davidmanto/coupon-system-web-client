@@ -1,0 +1,21 @@
+<ng-container *ngIf="loginDetailsService.loggedIn; else elseTemplate">
+  <div class="header-div">
+    <span class="welcome-text">
+      Welcome {{loginDetailsService.name == "admin" && "Administrator" || loginDetailsService.name}}
+    </span>
+    <a *ngIf="canChangeAccountSettings()" mat-button class="button" (click)="goToAccountDetailsPage()">My Account</a>
+    <a mat-button class="button" (click)="logout()">Log out</a>
+  </div>
+
+  <app-nav-bar *ngIf="loginDetailsService.isLoggedIn()">
+    
+  </app-nav-bar>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <div class="header-div">
+    <span class="welcome-text">
+      Welcome guest, please log in.
+    </span>
+  </div>
+</ng-template>

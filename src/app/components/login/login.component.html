@@ -1,0 +1,26 @@
+<div class="login-div">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    I am :<br>
+    <mat-form-field>
+      <mat-select placeHolder="Client Type" formControlName="type">
+        <mat-option *ngFor="let clientType of clientTypeKeys" [value]="clientType">
+          {{ClientType[clientType]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" formControlName="password">
+    </mat-form-field>
+
+    <div class="button-div">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!isSubmitEnabled()">Login</button>
+      <button mat-raised-button color="primary" (click)="goToRegisterPage()">Create new account</button>
+    </div>
+  </form>
+</div>

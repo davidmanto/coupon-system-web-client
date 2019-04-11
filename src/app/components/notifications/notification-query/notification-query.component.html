@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <ng-container *ngFor="let query of data.variables">
+    <p>{{query.message}}</p>
+    <span [ngSwitch]="query.type">
+      <mat-form-field *ngSwitchCase="'date'">
+        <input matInput [(ngModel)]="data.resultData[query.var]" [placeholder]="query.oldValue != null && 'Leave empty for no change'" [matDatepicker]="picker" [min] = "query.minDate" [max] = "query.maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field *ngSwitchDefault>
+        <input autocomplete="new-password" matInput [(ngModel)]="data.resultData[query.var]" [type]=query.type
+          [placeholder]="query.oldValue  != null  && 'Leave empty for no change'">
+      </mat-form-field>
+
+    </span>
+    
+  </ng-container>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="buttons" (click)="onCancel()">Cancel</button>
+  <button mat-button class="buttons" [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+</div>

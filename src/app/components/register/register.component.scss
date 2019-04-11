@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+.register-div {
+    @include mat-elevation(4);
+    position: absolute;
+    background-color: color(--div-main);
+    padding: 2%;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: fit-content;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.button-div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.error {
+    color: color(--warning) !important;
+}
+
+.ok {
+    color: color(--main) !important;
+}

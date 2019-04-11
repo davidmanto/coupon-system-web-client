@@ -1,0 +1,125 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+section {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: 100%;
+    height: 100%;
+}
+
+section>* {
+    grid-column: 6 / span 14;
+}
+
+.main-div {
+    @include mat-elevation(4);
+    position: relative;
+    background-color: color(--div-main);
+    height: 100%;
+}
+
+.coupon-title {
+    padding: 10px;
+    text-align: center;
+    font-size: 72px;
+}
+
+.coupon-img-box {
+    overflow: hidden;
+    .coupon-category,
+    .coupon-stock {
+        @include mat-elevation(2); // margin-left:10px;
+        width: fit-content;
+        padding: 5px;
+        font-weight: 900;
+        background-color: color(--main-header);
+        color: color(--main-header-text);
+    }
+    .coupon-stock {
+        float: right;
+    }
+    .out-of-stock {
+        background-color: color(--warning);
+    }
+    .coupon-img {
+        position: relative;
+        img {
+            // vertical-align: top;   
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+        .enlarge-option-poisiton {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            text-align: center;
+            cursor: pointer;
+            .enlarge-option {
+                pointer-events: none;
+                position: relative;
+                // transform : translateY(-50%) translateX(-50%);
+                top: 0;
+                left: 0;
+                width: fit-content;
+                background-color: #95959594;
+                color: white;
+                font-size: 24px;
+                font-weight: 900;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.coupon-price-date {
+    position: relative;
+    padding: 5px;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .price {
+        float: left;
+    }
+    .date {
+        float: right;
+    }
+    .update-button {
+        position: absolute;
+        right: 10px;
+    }
+}
+
+.coupon-msg {
+    font-size: 24px;
+    padding: 2%;
+    .coupon-msg-title {
+        display: block;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+}
+
+.purchase-section {
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex: 1 1 0;
+    button {
+        background-color: color(--main);
+        flex-basis: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+        height: 50px;
+        font-size: 24px;
+    }
+    .disabled {
+        background-color: color(--warning);
+    }
+}

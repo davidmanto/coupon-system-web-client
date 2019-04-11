@@ -1,0 +1,52 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+section {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: 100%;
+    height: 100%;
+}
+
+section>* {
+    grid-column: 5 / span 16;
+}
+
+.main-div {
+    @include mat-elevation(4);
+    position: relative;
+    background-color: color(--div-main);
+    height: 100%;
+}
+
+.title {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 48px;
+}
+
+.detail-row {
+    margin-left: 150px;
+    margin-right: 150px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-hr {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.button-div {
+    margin-top:50px;    
+    margin-left: 150px;
+    margin-right: 150px;
+    display: flex;
+    flex: 1 1 0;
+    button {
+        flex-basis: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

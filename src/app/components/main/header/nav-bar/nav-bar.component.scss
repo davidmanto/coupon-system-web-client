@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+
+.menu-div{
+    position: relative;
+    z-index: 10;
+    @include mat-elevation(4);
+    background-color: color(--nav);
+}
+
+.button-div{
+    display: inline-block;
+    border-right:1px solid color(--nav-rule);
+}

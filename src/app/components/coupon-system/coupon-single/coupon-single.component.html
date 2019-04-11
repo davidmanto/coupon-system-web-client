@@ -1,0 +1,26 @@
+<div class="main-div" [ngClass]="{'coupon-in-cart': shoppingCartService.hasCoupon(coupon.id), 'coupon-out-of-stock': coupon.amount < 1}">
+
+  <div class="header-div" [ngClass]="{'coupon-in-cart': shoppingCartService.hasCoupon(coupon.id), 'coupon-out-of-stock': coupon.amount < 1}">
+    <span class="title">{{coupon.title}}</span>
+    <span class="type">{{coupon.type}}</span>
+  </div>
+
+  <div class="img-div">
+    <img [src]="'assets/coupon_img/small/' + coupon.image">
+    <div class="special-message" *ngIf="shoppingCartService.hasCoupon(coupon.id)">
+      In cart
+    </div>
+
+    <div class="special-message out-of-stock" *ngIf="coupon.amount < 1">
+      Out of stock
+    </div>
+  </div>
+
+  <div class="description-div">
+    {{coupon.message}}
+  </div>
+
+  <button mat-raised-button color="primary" class="buy-button" (click)="viewDetails()">View Details</button>
+  <span class="price">{{coupon.price | currency}}</span>
+
+</div>

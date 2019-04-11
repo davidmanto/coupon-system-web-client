@@ -1,0 +1,31 @@
+<section>
+  <div class="main-div">
+    <div class="title">
+      Account Details
+    </div>
+
+    <div class="detail-row">
+      <span class="info"><b>Account ID:</b></span>
+      <span class="data">{{clientData.id}}</span>
+    </div>
+    <hr class="detail-hr">
+
+    <div class="detail-row">
+      <span class="info"><b>Name:</b></span>
+      <span class="data">{{clientData.name}}</span>
+    </div>
+    <hr class="detail-hr">
+
+    <div class="detail-row">
+      <span class="info"><b>Email Address:</b></span>
+      <span class="data">{{clientData.email}}</span>
+    </div>
+    <hr class="detail-hr">
+
+    <div class="button-div">
+      <button mat-raised-button (click)="updateDetails()" color="primary">Update Details</button>
+      <button mat-raised-button (click)="goHome()" color="primary">Go back</button>
+    </div>
+
+  </div>
+</section>

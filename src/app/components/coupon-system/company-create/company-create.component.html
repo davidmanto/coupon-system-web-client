@@ -1,0 +1,35 @@
+<section>
+    <div class="main-div">
+        <div class="title">
+            Create New Company
+        </div>
+
+        <form [formGroup]="creationForm" class="form" (ngSubmit)="submit()">
+
+            <mat-form-field>
+                <input matInput placeholder="Company Name" autocomplete="new-password" formControlName="name">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.name)]">Must be between 4 and 18 characters</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Company Email Address" autocomplete="new-password" formControlName="email">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.email)]">Must be a valid email address</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="password" matInput placeholder="Company Password" autocomplete="new-password" formControlName="password">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.password)]">Must be between 8 and 16 characters</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password"  placeholder="Company Password" autocomplete="new-password" formControlName="repeatPassword">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.repeatPassword)]">Passwords must match</mat-hint>
+            </mat-form-field>
+
+            <div class="button-div">   
+                <button [disabled] = "!submitEnabled()" type="submit" mat-raised-button color="primary">Create Company</button>
+            </div>
+        </form>
+
+    </div>
+</section>

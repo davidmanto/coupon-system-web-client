@@ -1,0 +1,68 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+
+:host{
+    position: fixed !important; 
+    margin:10px !important;
+    border-radius: 2px !important;
+    right: 0px;
+    width: calc( 100% / 24 * 3 - 20px ) !important;
+}
+
+hr{
+    width: calc( 100% - 30px );
+}
+
+.cart-box{
+    @include mat-elevation(4);
+    background-color: color(--div-main);
+    display:flex;
+    flex-direction: column;   
+    overflow: hidden;
+    max-height: calc( 100vh - 130px );
+}
+
+.cart-box-header{
+    padding:2px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color:color(--main);
+}
+
+.coupon-line{
+    overflow: hidden;
+    padding-left:10px;
+    padding-right:5px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+        float: right;
+    }
+}
+
+.checkout-button{
+    background-color:color(--main);
+    border-radius: 2px;
+    margin:15px;
+    padding: 0px;
+
+    // text overflow 
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+}
+
+.total-price{
+    font-weight: 900;
+    margin-top:5px;
+    margin-left:15px;
+}
+
+.cart-list{
+    max-height: calc( 100vh - 265px);
+    overflow-y:auto;
+}

@@ -1,0 +1,104 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+
+section{
+    display:grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(24,1fr);
+}
+
+.option-box{
+    position: fixed;
+    padding: 10px;
+    border-radius: 2px;
+    top:60px;
+    width: calc( 100% / 24 * 3 - 20px);
+    max-height: calc( 100vh - 130px );
+    overflow-y: auto;
+
+    
+    .option-filter{
+        @include mat-elevation(4);
+        background-color: color(--div-main);
+        display:flex;
+        flex-direction: column; 
+        overflow: hidden; 
+    }
+
+    .option-filter-header{
+        text-align: center;
+        box-sizing: border-box;
+        background-color:color(--main);
+        padding:2px;
+    }
+
+    .slider-div{
+        padding-left:20px;
+        padding-right:20px;
+        text-align: center;
+
+        .price-inputs{
+            display:flex;
+            justify-content: space-between;
+            mat-form-field{
+                width: calc( 100% / 2 - 10px );
+            }
+        }
+    }
+
+    mat-checkbox{
+        padding: 10px;
+    }
+
+    a{
+        cursor: pointer;
+    }
+}
+
+.search-box{
+    @include mat-elevation(4);
+    position: fixed;
+    margin:10px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    top:60px;
+    left: calc( 100% / 24 * 3);
+    width: calc( 100% / 24 * 18 - 20px );
+    z-index: 10;
+    background-color: white;
+}
+
+.selected{
+    font-style: oblique;
+    font-weight: 900;
+    color: color(--coupon-category-selected);
+}
+
+.coupon-box{
+    margin-top:40px;
+    grid-column: 4 / span 18;
+    grid-row: 1 / span 24;
+    padding:10px;
+    display: flex;
+    flex-wrap: wrap;
+
+    app-coupon-single{
+        width: calc( 100% / 3 - (20px / 3) );
+        margin-left: 10px;
+    }
+
+    app-coupon-single:nth-child(3n+1){
+        margin-left: 0px;
+    }
+}
+
+.coupon-box-header{
+    margin:10px;
+    margin-bottom:0px;
+    border: 1px solid black;
+    grid-column: 4 / span 22;
+    grid-row: span 1;
+    display:flex;
+    justify-content:center;
+}

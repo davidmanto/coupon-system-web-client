@@ -1,0 +1,40 @@
+<section>
+  <div class="main-div">
+    <ng-container *ngIf="customerData; else elseTemplate">
+      <div class="title">
+        Customer Details
+      </div>
+
+      <div class="detail-row">
+        <span class="info"><b>Customer ID:</b></span>
+        <span class="data">{{customerData.id}}</span>
+      </div>
+      <hr class="detail-hr">
+
+      <div class="detail-row">
+        <span class="info"><b>Customer Name:</b></span>
+        <span class="data">{{customerData.name}}</span>
+      </div>
+      <hr class="detail-hr">
+
+      <div class="detail-row">
+        <span class="info"><b>Customer Email Adress:</b></span>
+        <span class="data">{{customerData.email}}</span>
+      </div>
+      <hr class="detail-hr">
+
+      <div class="button-div">
+        <button mat-raised-button (click)="updateDetails()" color="primary">Update Details</button>
+        <button mat-raised-button (click)="deleteCustomer()" color="primary">Delete Customer</button>
+        <button mat-raised-button (click)="goBack()" color="primary">Go back</button>
+      </div>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+      <div class="title">
+          {{noDataText}}
+      </div>
+    </ng-template>
+
+  </div>
+</section>

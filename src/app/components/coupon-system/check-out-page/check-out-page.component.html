@@ -1,0 +1,61 @@
+<section>
+  <div class="main-div">
+
+    <h1 class="page-title">Coupons in cart:</h1>
+
+    <div class="coupon-line">
+      <span>
+        <b>
+          Coupon
+        </b>
+      </span>
+
+      <span class="price">
+        <b>
+          Price
+        </b>
+      </span>
+    </div>
+
+    <br>
+
+    <ng-container *ngFor="let coupon of shoppingCartService.getCouponList(); let i = index">
+    <!-- <ng-container *ngFor="let coupon of coupons"> -->
+      <div class="coupon-line">
+
+        <span>
+          {{coupon.title}}
+        </span>
+
+        <span class="price">
+          {{coupon.price | currency }}
+        </span>
+
+        <button mat-icon-button (click)="shoppingCartService.removeFromCart(i)">
+          <mat-icon color="warn">remove_shopping_cart</mat-icon>
+        </button>
+        
+      </div>
+      <hr class="coupon-ruler">
+    </ng-container>
+
+    <div class="coupon-line">
+      <span>
+        <b>
+          TOTAL PRICE:
+        </b>
+      </span>
+
+      <span class="price">
+        <b>
+          {{shoppingCartService.getTotalPrice() | currency }}
+        </b>
+      </span>
+    </div>
+
+    <div class="purchase-button">
+      <button mat-raised-button color="primary" (click)="shoppingCartService.commitCheckout()">PURCHASE</button>
+    </div>
+  </div>
+
+</section>

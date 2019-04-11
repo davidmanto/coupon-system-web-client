@@ -1,0 +1,23 @@
+<section>
+  <header>
+    <app-login-bar></app-login-bar>
+  </header>
+
+  <main>
+    <div class="router">
+      <router-outlet></router-outlet>
+    </div>
+    <footer>
+      <app-footer>
+
+      </app-footer>
+    </footer>
+  </main>
+</section>
+
+<button class="go-to-top-button" *ngIf="notAtTop" mat-flat-button (click)="scrollToTop()">
+  Return to top
+</button>
+<!-- <app-img-uploader>
+  
+</app-img-uploader> -->

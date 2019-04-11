@@ -1,0 +1,40 @@
+<section>
+    <div class="main-div">
+      <ng-container *ngIf="companyData; else elseTemplate">
+        <div class="title">
+          Company Details
+        </div>
+  
+        <div class="detail-row">
+          <span class="info"><b>Company ID:</b></span>
+          <span class="data">{{companyData.id}}</span>
+        </div>
+        <hr class="detail-hr">
+  
+        <div class="detail-row">
+          <span class="info"><b>Company Name:</b></span>
+          <span class="data">{{companyData.name}}</span>
+        </div>
+        <hr class="detail-hr">
+        
+        <div class="detail-row">
+          <span class="info"><b>Company Email Address:</b></span>
+          <span class="data">{{companyData.email}}</span>
+        </div>
+        <hr class="detail-hr">
+
+        <div class="button-div">
+          <button mat-raised-button (click)="updateDetails()" color="primary">Update Details</button>
+          <button mat-raised-button (click)="deleteCompany()" color="primary">Delete Company</button>
+          <button mat-raised-button (click)="goBack()" color="primary">Go back</button>
+        </div>
+      </ng-container>
+  
+      <ng-template #elseTemplate>
+        <div class="title">
+          {{noDataText}}
+        </div>
+      </ng-template>
+  
+    </div>
+  </section>

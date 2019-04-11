@@ -1,0 +1,61 @@
+<section>
+    <div class="main-div">
+        <div class="title">
+            Create New Coupon
+        </div>
+
+        <form [formGroup]="creationForm" class="form" (ngSubmit)="submit()">
+
+            <mat-form-field>
+                <input matInput placeholder="Coupon Title" autocomplete="new-password" [formControl]="creationForm.controls.title">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.title)]">Must be between 4 and 30 characters</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Select a Category" [formControl]="creationForm.controls.type">
+                    <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
+                </mat-select>
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.type)]">Select a category from the given
+                    options</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Coupon Description" autocomplete="new-password" [formControl]="creationForm.controls.message"></textarea>
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.message)]">Must be between 10 to 255
+                    characters</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Coupon Price" autocomplete="new-password" [formControl]="creationForm.controls.price">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.price)]">Must be a positive whole or decimal</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Stock Amount" autocomplete="new-password" [formControl]="creationForm.controls.amount">
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.amount)]">Must be a positive whole number</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Expiry Date" [matDatepicker]="picker" [formControl]="creationForm.controls.endDate"
+                    [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.endDate)]">Must be valid date</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Select an image" [formControl]="creationForm.controls.img">
+                    <mat-option *ngFor="let img of couponImageList" [value]="img">{{img}}</mat-option>
+                </mat-select>
+                <mat-hint [ngClass]="[hintColorClass(creationForm.controls.img)]">Must select an image, up to 24
+                    characters ( only letters and numbers )</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button type="button" [disabled]="!this.creationForm.controls.img.dirty" color="primary" (click)="previewImage()">Preview Image</button>
+
+            <div class="button-div">
+                <button [disabled]="!submitEnabled()" type="submit" mat-raised-button color="primary">Create Coupon</button>
+            </div>
+        </form>
+
+    </div>
+</section>

@@ -1,0 +1,5 @@
+<div class="menu-div">
+  <div class="button-div" *ngFor="let button of navButtons">
+    <button mat-button (click)="navigate(button)">{{button.name}}</button>
+  </div>
+</div>

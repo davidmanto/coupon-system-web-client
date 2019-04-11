@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+@import '~src/app/themes/theme.scss';
+section {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: 100%;
+    height: 100%;
+}
+
+section>* {
+    grid-column: 5 / span 16;
+}
+
+.main-div {
+    @include mat-elevation(4);
+    position: relative;
+    background-color: color(--div-main);
+    height: 100%;
+}

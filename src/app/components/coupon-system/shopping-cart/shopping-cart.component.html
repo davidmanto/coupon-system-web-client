@@ -1,0 +1,27 @@
+<div class="cart-box" *ngIf="canSeeCart()">
+    <div class="cart-box-header">
+        Shopping Cart
+    </div>
+
+    <div class="total-price">
+        Total Price: {{shoppingCartService.getTotalPrice() | currency}}
+    </div>
+
+    <hr>
+
+    <div class="cart-list">
+        <div class="coupon-line" *ngFor="let coupon of shoppingCartService.getCouponList(); let i = index">
+            <span>
+                {{coupon.title}} ({{coupon.price | currency}})
+                <button mat-icon-button (click)="shoppingCartService.removeFromCart(i)">
+                    <mat-icon color="warn">remove_shopping_cart</mat-icon>
+                </button>
+            </span>
+        </div>
+
+
+    </div>
+    <button mat-raised-button class="checkout-button" [disabled]="shoppingCartService.getCouponList().length==0" (click)="shoppingCartService.goToCheckout()">
+        {{shoppingCartService.getCouponList().length==0 && 'Cart Empty' || 'Proceed to checkout'}}
+    </button>
+</div>

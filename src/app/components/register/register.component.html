@@ -1,0 +1,39 @@
+<div class="register-div">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    Please fill out the form:
+    <!-- I registering as :<br>
+    <mat-form-field>
+      <mat-select placeHolder="Client Type" formControlName="type">
+        <mat-option *ngFor="let clientType of ['CUSTOMER', 'COMPANY']" [value]="clientType">
+          {{ClientType[clientType]}}
+        </mat-option>
+      </mat-select>
+      <mat-hint [ngClass]="[hintColorClass(registerForm.controls.type)]">Please select an option</mat-hint>
+    </mat-form-field> -->
+
+    <mat-form-field>
+      <input matInput placeholder="Name" autocomplete="new-password" formControlName="name">
+      <mat-hint [ngClass]="[hintColorClass(registerForm.controls.name)]">Must be between 4 and 18 characters</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Email address" autocomplete="new-password" formControlName="email">
+      <mat-hint [ngClass]="[hintColorClass(registerForm.controls.email)]">Must be a valid email address</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password"  placeholder="Password" autocomplete="new-password" formControlName="password">
+      <mat-hint [ngClass]="[hintColorClass(registerForm.controls.password)]">Must be a between 8 and 16 characters</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password"  placeholder="Repeat Password" autocomplete="new-password" formControlName="repeatPassword">
+      <mat-hint [ngClass]="[hintColorClass(registerForm.controls.repeatPassword)]">Passwords must batch</mat-hint>
+    </mat-form-field>
+
+    <div class="button-div">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!isSubmitEnabled()">Register</button>
+      <button mat-raised-button color="primary" (click)="goToLoginPage()">Return to login page</button>
+    </div>
+  </form>
+</div>

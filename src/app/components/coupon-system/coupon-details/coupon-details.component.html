@@ -1,0 +1,68 @@
+<section>
+  <div class="main-div">
+    <ng-container *ngIf="coupon.id && coupon.id != 0; else elseTemplate">
+      <div class="coupon-title">
+        {{coupon.title != "" && coupon.title}}
+      </div>
+
+
+      <div class="coupon-img-box">
+        <div class="coupon-category">
+          {{coupon.type != "" && coupon.type}}
+        </div>
+
+        <div class="coupon-img">
+          <img [src]="'assets/coupon_img/big/' + coupon.image">
+          <div (click)="showBigImage()" class="enlarge-option-poisiton" (mouseenter)="showEnlargeText=true"
+            (mouseleave)="showEnlargeText=false">
+            <div class="enlarge-option" *ngIf="showEnlargeText">
+              Click to enlarge
+            </div>
+          </div>
+        </div>
+
+        <div class="coupon-stock" [ngClass]="{'out-of-stock': coupon.amount == 0}">
+          {{coupon.amount != 0 && (coupon.amount + ' in stock')}}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="coupon-price-date">
+        <span><b>Expiry date:</b> {{coupon.endDate | date}}</span>
+        <span><b>Price:</b> {{coupon.price | currency}}</span>
+
+        <button *ngIf="couponBelongsToCompany()" class="update-button" mat-raised-button color="primary" (click)="updateCoupon()">Update</button>
+      </div>
+
+      <hr>
+
+      <div class="coupon-msg">
+        <span class="coupon-msg-title">
+          Details
+        </span>
+        {{coupon.message}}
+      </div>
+
+      <hr>
+
+      <div class="purchase-section">
+        <button mat-raised-button *ngIf="canPurchase()" [ngClass]="{'disabled': coupon.amount == 0}" [disabled]="coupon.amount==0"
+          (click)="cart.shoppingCartService.addToCart(coupon)">
+          {{coupon.amount == 0 && 'Out of stock' || 'Add to cart'}}</button>
+        <button mat-raised-button (click)="goHome()">{{backButtonText}}</button>
+        <button *ngIf="couponBelongsToCompany()" mat-raised-button color="primary" (click)="deleteCoupon()">Delete
+          Coupon</button>
+      </div>
+
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="coupon-title">
+        {{"Coupon Not found"}}
+      </div>
+    </ng-template>
+  </div>
+  <app-shopping-cart #cart>
+
+  </app-shopping-cart>
+</section>

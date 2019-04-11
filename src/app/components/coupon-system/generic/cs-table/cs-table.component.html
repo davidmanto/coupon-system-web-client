@@ -1,0 +1,67 @@
+<div class="main-div">
+  <div *ngIf="rowsData.filters.length > 0" class="filter-div">
+    <mat-form-field>
+      <mat-select placeholder="Filter by...">
+        <mat-option (click)="selectActiveFilter(filter)" *ngFor="let filter of rowsData.filters" [value]="filter.varName">
+          {{filter.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngIf="activeFilter && activeFilter.type=='numeral'">
+      <mat-form-field>
+        <input matInput type="number" placeholder="Minimum" [(ngModel)]="filterMinValue">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Maximum" [(ngModel)]="filterMaxValue">
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="activeFilter && activeFilter.type=='string'">
+      <mat-form-field>
+        <input matInput placeholder="Filter by text" [(ngModel)]="filterStringSearch">
+      </mat-form-field>
+    </ng-container>
+
+  </div>
+
+  <div class="table-div" [ngClass]="{'table-div-with-select': selectFunction}">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let row of rowsData.rows">
+            {{row.title}}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngFor="let data of tableData">
+          <tr *ngIf="canShowRow(data)" [ngClass]="{'selected': data==selectedRow}" (click)="selectRow(data)">
+            <td *ngFor="let row of rowsData.rows">
+              <ng-container *ngIf="row.func; else elseTemplate">
+                {{row.func(data[row.varName])}}
+              </ng-container>
+              <ng-template #elseTemplate>
+                {{data[row.varName]}}
+              </ng-template>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div *ngIf="selectFunction" class="selection-div">
+    <ng-container *ngIf="selectedRow; else elseTemplate">
+      {{selectTextSelected}}{{selectedRow[selectTextVar]}}
+
+      <button mat-raised-button color="primary" (click)="selectFunction()">{{selectedButtonText}}</button>
+    </ng-container>
+    <ng-template #elseTemplate>
+      {{selectTextUnSelected}}
+    </ng-template>
+
+  </div>
+</div>
